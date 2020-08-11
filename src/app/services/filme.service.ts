@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators' ;
 
-import { Filme } from '../model/filme';
+import { Filme } from '../models/filme';
 import { Config } from '../config';
 
 @Injectable({
@@ -68,5 +68,9 @@ export class FilmeService {
         }
       }
     )
+  }
+  getGenre
+  getGenreName(id){
+
   }
 }
