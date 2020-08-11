@@ -4,7 +4,9 @@
     <h2>Filmes</h2>
     <ul>
         <li *ngFor='let filme of this.filmes'>
-            {{ filme.title }}
+            title: {{ filme.title }} <br>
+            Genre: {{ filme.genre_ids }} <br>
+            Popularidade: {{ filme.popularity }}<br><br>
         </li>
     </ul>
 </div>

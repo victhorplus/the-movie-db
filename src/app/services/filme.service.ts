@@ -15,15 +15,33 @@ export class FilmeService {
     private http: HttpClient
   ){}
 
-  getFilmes(page=1): Observable<Filme[]>{
+  getFilmes(page): Observable<Filme[]>{
     return this.http.get<Filme[]>(
       this.config.api_url + '/discover/movie',
-      {params: {
-        api_key: this.config.api_key,
-        language: this.config.language,
-        sort_by: 'popularity.desc',
-        page: ''+page
-      }}
+      {
+        params: {
+          api_key: this.config.api_key,
+          language: this.config.language,
+          sort_by: 'popularity.desc',
+          page: page
+        },
+      }
     )
   }
+
+  getFilmesByGenero(genre_id, page){
+    return this.http.get(
+      this.config.api_url+'/discover/movie',
+      {
+        params: {
+          api_key: this.config.api_key,
+          language: this.config.language,
+          sort_by: 'popularity.desc',
+          page: page,
+          with_genres: genre_id
+        },
+      }
+    )
+  }
+
 }
