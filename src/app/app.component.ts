@@ -9,7 +9,7 @@ import { Filme } from './model/filme'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  filmes: Filme[];
+  filmes: Filme[] = [];
   total_pages: number;
   actual_page: number;
 
@@ -18,7 +18,8 @@ export class AppComponent {
   ){
     // this.getFilmes();
     // this.getFilmesByGenre(18);
-     this.getFilmesByTitle('amor')
+    // this.getFilmesByTitle('amor');
+    this.getFilmeById(2);
   }
   
   getFilmes(page = 1){
@@ -46,4 +47,21 @@ export class AppComponent {
     });
   }
   
+  getFilmeById(id){
+    this.filmeService.getFilmeById(id).subscribe(result=>{
+      let filme: Filme = {
+        id: result['id'],
+        title: result['title'],
+        overview: result['overview'],
+        genre_ids: [],
+        poster_path: result['poster_path'],
+        backdrop_path: result['backdrop_path'],
+        popularity: result['popularity']
+      }
+      for(let genre of result['genres']){
+        filme.genre_ids.push(genre['id'])
+      }
+      this.filmes.push(filme)
+    })
+  }
 }
