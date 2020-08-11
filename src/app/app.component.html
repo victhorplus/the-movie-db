@@ -1,3 +1,10 @@
-<router-outlet>
-    {{ title }}
-</router-outlet>
+<!--router-outlet>
+</router-outlet-->
+<div>
+    <h2>Filmes</h2>
+    <ul>
+        <li *ngFor='let filme of this.filmes'>
+            {{ filme.title }}
+        </li>
+    </ul>
+</div>

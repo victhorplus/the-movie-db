@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { config } from './config'
+
+import { FilmeService } from './services/filme.service'
+import { Filme } from './model/filme'
 
 @Component({
   selector: 'app-root',
@@ -7,5 +9,18 @@ import { config } from './config'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = config.api_key;
+  filmes: Filme[];
+
+  constructor(
+    private filmeService: FilmeService
+  ){
+    this.getFilmes();
+  }
+  
+  getFilmes(page=1){
+    this.filmeService.getFilmes(page).subscribe(result => {
+      this.filmes = result['results'];
+      console.log(this.filmes)
+    })
+  }
 }

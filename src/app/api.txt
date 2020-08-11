@@ -1,0 +1,18 @@
+// Lista de gêneros
+    http://api.themoviedb.org/3/genre/movie/list?api_key=7d111b2b01fde368dbf50218641146e7
+
+// Buscar gênero por id
+http://api.themoviedb.org/3/genre/18?api_key=7d111b2b01fde368dbf50218641146e7
+
+// Buscar filmes por nome
+https://api.themoviedb.org/3/search/movie?api_key=7d111b2b01fde368dbf50218641146e7&query=amor
+
+// Buscar filmes por gênero
+http://api.themoviedb.org/3/discover/movie?api_key=7d111b2b01fde368dbf50218641146e7&sort_by=popularity.desc&with_genres=18
+
+// Busca geral por popularidade
+http://api.themoviedb.org/3/discover/movie?api_key=7d111b2b01fde368dbf50218641146e7&sort_by=popularity.desc
+
+// Buscar filmes por nome
+https://api.themoviedb.org/3/search/movie?api_key=7d111b2b01fde368dbf50218641146e7&query=Jack+Reacher
+
