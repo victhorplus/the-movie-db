@@ -17,8 +17,8 @@ export class AppComponent {
     private filmeService: FilmeService
   ){
     // this.getFilmes();
-     this.getFilmesByGenre(18);
-    // this.getFilmesByTitle('amor')
+    // this.getFilmesByGenre(18);
+     this.getFilmesByTitle('amor')
   }
   
   getFilmes(page = 1){
@@ -37,7 +37,7 @@ export class AppComponent {
     })
   }
 
-  /*
+
   getFilmesByTitle(title, page = 1){
     this.filmeService.getFilmesByTitle(title, page).subscribe(result => {
       this.total_pages = result['total_pages'];
@@ -45,5 +45,5 @@ export class AppComponent {
       this.filmes = result['results'];
     });
   }
-  */
+  
 }

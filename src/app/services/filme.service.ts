@@ -44,4 +44,18 @@ export class FilmeService {
     )
   }
 
+  
+  getFilmesByTitle(title, page){
+    return this.http.get(
+      this.config.api_url + '/search/movie',
+      {
+        params: {
+          api_key: this.config.api_key,
+          language: this.config.language,
+          page: page,
+          query: title
+        },
+      }
+    )
+  }
 }
