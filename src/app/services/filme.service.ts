@@ -69,8 +69,5 @@ export class FilmeService {
       }
     )
   }
-  getGenre
-  getGenreName(id){
-
-  }
+  
 }

@@ -25,4 +25,16 @@ export class GeneroService {
     )
   }
 
+  getGenreById(id){
+    return this.http.get(
+      this.config.api_url + '/genre/' + id,
+      {
+        params: {
+          api_key: this.config.api_key,
+          language: this.config.language
+        }
+      }
+    )
+  }
+
 }

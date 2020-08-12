@@ -12,6 +12,7 @@ import { Filme } from './models/filme';
 export class AppComponent {
   filmes: Filme[] = [];
   generos = [];
+  genre;
   total_pages: number;
   actual_page: number;
 
@@ -24,6 +25,7 @@ export class AppComponent {
     // this.getFilmesByTitle('amor');
     // this.getFilmeById(2);
     this.getAllGenres()
+    this.getGenreById(37)
   }
   
   getFilmes(page = 1){
@@ -73,5 +75,11 @@ export class AppComponent {
     this.genreService.getAllGenres().subscribe(result =>{
       this.generos = result['genres']
     });
+  }
+
+  getGenreById(id){
+    this.genreService.getGenreById(id).subscribe(result => {
+      this.genre = result;
+    })
   }
 }
