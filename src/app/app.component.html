@@ -1,24 +1,37 @@
-<!--router-outlet>
-</router-outlet-->
-<div>
-    <h2>Filmes</h2>
-    <ul>
-        <li *ngFor='let filme of this.filmes'>
-            title: {{ filme.title }} <br>
-            Genre: {{ filme.genre_ids }} <br>
-            Popularidade: {{ filme.popularity }}<br><br>
-        </li>
-    </ul>
-</div>
+<nav class='navbar navbar-light'>
+    <a class="navbar-brand col-6" routerLink='/'>
+        <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" width="154" height="20" class="d-inline-block align-top">
+    </a>
 
-<div>
-    <h2>Genero</h2>
-    <ul>
-        <li *ngFor='let genero of this.generos'>
-            Genero {{ genero.id }}: {{ genero.name }}
-        </li>
-        <li>
-            Genero {{ genre.id }}: {{ genre.name }}
-        </li>
-    </ul>
-</div>
+    <div class='col-6 row form-inline search'>
+        <input #searchFilme class='col-sm-10 col-lg-6 form-control' type="search" placeholder='Buscar filme'>
+        <button  (click)='search(searchFilme.value)' class='col-sm-2 col-lg-1 btn btn-outline-primary'>
+            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+            </svg>
+        </button>
+    </div>
+</nav>
+<section class='container-fluid row'> 
+    <div class='col-2 categorias'>
+        <div class='categoria-header'>
+            <h4>Categorias</h4>
+        </div>
+        <div class='categoria-body'>
+            <ul>
+                <li *ngFor='let genero of generos'>
+                    <a routerLink='/genre/{{ genero.id }}'>
+                        {{genero.name}}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class='col-10'>
+        <router-outlet>
+        </router-outlet>
+    </div>
+</section>
+

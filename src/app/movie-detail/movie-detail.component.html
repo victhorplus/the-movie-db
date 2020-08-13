@@ -1,0 +1,31 @@
+<div class='container row movie-detail' *ngIf='filme'>
+    <div class='row'>
+        <div class='col-3 movie-poster'>
+            <img [src]="filme.poster_path" width='100%'>
+        </div>
+        <div class='col-9 movie-information'>
+            <div>
+                <strong>Título: </strong><span>{{ filme.title }}</span>
+            </div>
+            <div>
+                <strong>Sinopse: </strong><span>{{ filme.overview }}</span>
+            </div>
+            <div>
+                <strong>Popularidade: </strong><span>{{ filme.popularity }}</span>
+            </div>
+            <div>
+                <strong>Lançamento: </strong><span>{{ filme.release_date }}</span>
+            </div>
+            <div>
+                <strong>Gêneros: </strong>
+                <a [routerLink]="['/genre/', genero.id]" *ngFor='let genero of filme.genre_obj'>
+                    {{ genero.name }}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class='row movie-banner'>
+        <img class='col-12' [src]="filme.backdrop_path">
+    </div>
+</div>

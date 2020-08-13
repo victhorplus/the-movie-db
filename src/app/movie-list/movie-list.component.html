@@ -1,0 +1,33 @@
+<div class='movies container'>
+    <div class='navbar-light movies-header row'>
+        <h2 class='col-sm-5 col-lg-8'>
+            Filmes
+            <ng-content select=".categoria"></ng-content>
+        </h2>
+    </div>
+
+    <div *ngIf='filmes' class='movies-list container-fluid row row-cols-1 row-cols-sm-2 row-cols-md-4'>
+        <div class='movie-card col' *ngFor='let filme of filmes'>
+            <div class='card'>
+                <div class='img-poster'>
+                    <a [routerLink]="['/movie', filme.id]">
+                        <img class='card-img-top' [src]='filme.poster_path'>
+                    </a>
+                </div>
+    
+                <div class='card-body'>
+                    <h6>
+                        <a [routerLink]="['/movie', filme.id]">
+                            {{ filme.title }}
+                        </a>
+                    </h6>
+                    <small>
+                        <a [routerLink]="['/genre', genero.id]" *ngFor='let genero of filme.genre_obj'>
+                            {{genero.name}}
+                        </a>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

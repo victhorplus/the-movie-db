@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs'
 
-import { FilmeService } from './services/filme.service';
 import { GeneroService } from './services/genero.service';
-import { Filme } from './models/filme';
 
 @Component({
   selector: 'app-root',
@@ -10,76 +10,31 @@ import { Filme } from './models/filme';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  filmes: Filme[] = [];
   generos = [];
-  genre;
-  total_pages: number;
-  actual_page: number;
+  inscription: Subscription;
 
   constructor(
-    private filmeService: FilmeService,
-    private genreService: GeneroService
+    private genreService: GeneroService,
+    private router: Router
   ){
-    // this.getFilmes();
-    // this.getFilmesByGenre(18);
-    // this.getFilmesByTitle('amor');
-    // this.getFilmeById(2);
-    this.getAllGenres()
-    this.getGenreById(37)
-  }
-  
-  getFilmes(page = 1){
-    this.filmeService.getFilmes(page).subscribe(result => {
-      this.total_pages = result['total_pages'];
-      this.actual_page = result['page'];
-      this.filmes = result['results'];
-    });
+    this.inscription = this.getAllGenres();
   }
 
-  getFilmesByGenre(genre_id, page = 1){
-    this.filmeService.getFilmesByGenero(genre_id, page).subscribe(result=>{
-      this.total_pages = result['total_pages'];
-      this.actual_page = result['page'];
-      this.filmes = result['results'];
-    });
+  ngOnDestroy(){
+    this.inscription.unsubscribe();
   }
-
-
-  getFilmesByTitle(title, page = 1){
-    this.filmeService.getFilmesByTitle(title, page).subscribe(result => {
-      this.total_pages = result['total_pages'];
-      this.actual_page = result['page'];
-      this.filmes = result['results'];
-    });
-  }
-  
-  getFilmeById(id){
-    this.filmeService.getFilmeById(id).subscribe(result=>{
-      let filme: Filme = {
-        id: result['id'],
-        title: result['title'],
-        overview: result['overview'],
-        genre_ids: [],
-        poster_path: result['poster_path'],
-        backdrop_path: result['backdrop_path'],
-        popularity: result['popularity']
-      }
-      for(let genre of result['genres']){
-        filme.genre_ids.push(genre['id'])
-      }
-      this.filmes.push(filme)
-    });
-  }
-
   getAllGenres(){
-    this.genreService.getAllGenres().subscribe(result =>{
+    return this.genreService.getAllGenres().subscribe(result =>{
       this.generos = result['genres']
     });
   }
 
-  getGenreById(id){
-    this.genreService.getGenreById(id).subscribe(result => {
-      this.genre = result;
-    })
+  search(title){
+    var route = ['/main']
+    if(title)
+      route.push(title)
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
+    this.router.navigate(route));
   }
+
 }
