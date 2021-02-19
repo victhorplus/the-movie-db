@@ -1,0 +1,7 @@
+#search{
+    margin-left: auto;
+}
+
+.btn-icon:hover g, .btn-icon:hover path{
+    fill: #000 !important;
+}

@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs'
 
+import Font from 'modulo01-victhor';
 import { GeneroService } from './services/genero.service';
+import { FontService } from './services/font.service';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +17,13 @@ export class AppComponent {
 
   constructor(
     private genreService: GeneroService,
-    private router: Router
+    private router: Router,
+    private fontService: FontService
   ){
     this.inscription = this.getAllGenres();
   }
+
+  ngOnInit(){ }
 
   ngOnDestroy(){
     this.inscription.unsubscribe();
@@ -37,4 +42,18 @@ export class AppComponent {
     this.router.navigate(route));
   }
 
+  incrementFontSize(){
+    let context = document;
+    this.fontService.incrementFontSize(context);
+  }
+
+  decrementFontSize(){
+    let context = document;
+    this.fontService.decrementFontSize(context);
+  }
+
+  reset(){
+    let context = document;
+    this.fontService.reset(context);
+  }
 }

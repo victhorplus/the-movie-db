@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { FilmeService } from './services/filme.service';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
-import { MovieGenreComponent } from './movie-genre/movie-genre.component'
+import { MovieGenreComponent } from './movie-genre/movie-genre.component';
 
 @NgModule({
   declarations: [

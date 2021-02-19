@@ -1,18 +1,62 @@
-<nav class='navbar navbar-light'>
+<nav class='navbar navbar-dark bg-primary'>
     <a class="navbar-brand col-6" routerLink='/'>
         <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" width="154" height="20" class="d-inline-block align-top">
     </a>
 
-    <div class='col-6 row form-inline search'>
-        <input #searchFilme class='col-sm-10 col-lg-6 form-control' type="search" placeholder='Buscar filme'>
-        <button  (click)='search(searchFilme.value)' class='col-sm-2 col-lg-1 btn btn-outline-primary'>
-            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+    <div class='col-6 row form-inline'>
+        <div id='search' class="form-inline">
+            <input #searchFilme class='form-control mr-sm-2' type="search" placeholder='Buscar filme'>
+            <button  (click)='search(searchFilme.value)' class='btn btn-light my-2 my-sm-0'>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div id='wal-bar' class='navbar navbar-dark bg-dark'>
+    <div class='icons' style="margin-left: auto;">
+        <button (click)="reset()" title="Resetar alterações" class="btn btn-icon btn-outline-light mr-sm-2" style="padding: 0px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" style="width: 32px !important;height: 32px !important;">
+                <rect width="32" height="32" fill="none" />
+                <g transform="translate(-176 -81)">
+                    <path d="M7.578-3.2H2.414L1.242,0H.234l4.3-11.375h.914L9.758,0h-1ZM2.711-4.008H7.273L4.992-10.2Z" transform="translate(187 102)" fill="#ffffff" />
+                    <g transform="translate(187 104)" fill="#ffffff" stroke="#ffffff" stroke-width="1">
+                        <rect width="10" height="1" stroke="none"/>
+                        <rect x="0.5" y="0.5" width="9" fill="none"/>
+                    </g>
+                </g>
+            </svg>
+        </button>
+
+        <button (click)='incrementFontSize()' title="Aumentar fonte" class="btn btn-icon btn-outline-light mr-sm-2" style="padding: 0px;">
+            <svg id="font-increase-white" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" style="width: 32px !important;height: 32px !important;">
+                <rect id="XMLID_7_" width="32" height="32" fill="none" />
+                <g transform="translate(-225.234 -79.45)">
+                    <g transform="translate(48)">
+                        <path d="M7.578-3.2H2.414L1.242,0H.234l4.3-11.375h.914L9.758,0h-1ZM2.711-4.008H7.273L4.992-10.2Z" transform="translate(187 102)" fill="#fff" />
+                    </g>
+                    <path d="M10.4,374.3H9.733v2.667H7.1v.667H9.733V380.3H10.4v-2.667h2.7v-.667H10.4Z" transform="translate(235.436 -287.85)" fill="#fff" />
+                </g>
+            </svg>
+        </button>
+
+        <button (click)='decrementFontSize()' title="Diminuir fonte" class="btn btn-icon btn-outline-light mr-sm-2" style="padding: 0px;">
+            <svg id="font-decrease-white" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" style="width: 32px !important;height: 32px !important;">
+                <rect width="32" height="32" fill="none" />
+                <g transform="translate(-225.234 -79.45)">
+                    <g id="Grupo_1022" data-name="Grupo 1022" transform="translate(48)">
+                        <path d="M7.578-3.2H2.414L1.242,0H.234l4.3-11.375h.914L9.758,0h-1ZM2.711-4.008H7.273L4.992-10.2Z" transform="translate(187 102)" fill="#fff" />
+                    </g>
+                    <path d="M7.1,376.967v.667h6v-.667Z" transform="translate(235.436 -287.85)" fill="#fff" />
+                </g>
             </svg>
         </button>
     </div>
-</nav>
+</div>
+
 <section class='container-fluid row'> 
     <div class='col-2 categorias'>
         <div class='categoria-header'>
